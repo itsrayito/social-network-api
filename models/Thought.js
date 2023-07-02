@@ -1,6 +1,6 @@
 // What is used to import the mongoose npm package
 
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 // this is going to import the dateFormat function
 
@@ -8,7 +8,8 @@ const dateFormat = require('../utils/dateFormat');
 
 // this is going to create the Reaction Schema
 
-const ReactionSchema = new Schema({
+const ReactionSchema = new Schema(
+    {
     reactionId: {
         type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId()
@@ -37,7 +38,8 @@ const ReactionSchema = new Schema({
 
 // this is going to create the Thought Schema
 
-const ThoughtSchema = new Schema({
+const ThoughtSchema = new Schema(
+    {
     thoughtText: {
         type: String,
         maxLength: 280,
@@ -67,7 +69,7 @@ const ThoughtSchema = new Schema({
 );
 
 // will define a mongoose virtual for counting the number of reactions that a thought has
-UserSchema.virtual("reactionCount").get(function() {
+ThoughtSchema.virtual("reactionCount").get(function() {
     return this.reactions.length;
 });
 

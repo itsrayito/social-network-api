@@ -5,10 +5,11 @@ const router = require('express').Router();
 const apiRoutes = require('./api');
 
 // this will import the HTML routes
-const htmlRoutes = require('./html/html-routes');
+// const htmlRoutes = require('./html/html-routes');
 
 // goint to define the middleware for using the API & HTML routes
 router.use('/api', apiRoutes);
+// router.use('/', htmlRoutes);
 
 // going to define the middleware for responding with a user-input error if the user tries
 // to navigate to a route that does not exists

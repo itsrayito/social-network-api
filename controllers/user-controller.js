@@ -43,6 +43,7 @@ const UserController = {
     // this is going to create a user in the database
 
     createUser({ body }, res) {
+        console.log("Body", body);
         User.create(body)
         .then(dbUserData => res.json(dbUserData))
         .catch(err => res.json(err));
@@ -54,8 +55,7 @@ const UserController = {
         User.findOneAndUpdate(
             { _id: params.id },
             body,
-            { new: true, runValidators: true }
-        )
+            { new: true, runValidators: true })
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: 'No user was found with this ID. '});
@@ -77,12 +77,10 @@ const UserController = {
         // this is going to add a friend to a user in the database using the provided IDs for the user and friend
 
         addFriend({ params }, res) {
-            thoughtController.findOneAndUpdate(
+            User.findOneAndUpdate(
                 { _id: params.userId },
                 { $push: { friends: params.friendId } },
-                { new: true, runValidators: true }
-            )
-
+                { new: true, runValidators: true })
             .then(dbUserData => {
                 if (!dbUserData) {
                     res.status(404).json({ message: 'No user was found with this ID. '})
@@ -98,7 +96,7 @@ const UserController = {
         removeFriend({ params }, res) {
             User.findOneAndUpdate(
                 { _id: params.userId },
-                { $pull: { friends: params.friendsId } },
+                { $pull: { friends: params.friendId } },
                 { new: true, runValidators: true })
                 .then(dbUserData => {
                     if (!dbUserData) {

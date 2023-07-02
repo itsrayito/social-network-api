@@ -11,26 +11,26 @@ const dateFormat = require('../utils/dateFormat');
 const UserSchema = new Schema({
     username: {
         type: String,
+        unique: true,
         required: true,
         trim: true
     },
     email: {
         type: String,
         required: [true, 'Enter your email address'],
-        unique: true,
-        lowercase: true,
-        validate: {
-            validator: () => Promise.resolve(false),
-            message: 'Validation for the Email has failed!'
-        }
+        unique: true
+        // validate: {
+        //    validator: () => Promise.resolve(false),
+        //    message: 'Validation for the Email has failed!'
+        //}
     },
     thoughts: [{
         type: Schema.Types.ObjectId,
-        ref: Thought
+        ref: "Thought"
     }],
     friends: [{
         type: Schema.Types.ObjectId,
-        ref: User
+        ref: "User"
     }]
     },
     {
