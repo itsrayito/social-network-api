@@ -33,3 +33,4 @@ You can also get a hold of me through my [GitHub](https://github.com/itsrayito) 
 This challenge was made entirely by Rayito Aguirre<br>
 Lecture videos, helpful websites, and class sessions on NoSQL provided by Rice University Coding Bootcamp Instructors in partnership with edX.<br>
 ## Video-tutorial-link
+https://drive.google.com/file/d/15OMiblw8a4qP28ro0HTEaScVSqLvGMSo/view?usp=sharing
